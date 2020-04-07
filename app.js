@@ -99,6 +99,7 @@ app.post("/campgrounds",isloggedIn,function(req,res){
      var Name=req.body.Name;
      var Image=req.body.Image;
      var description=req.body.description;
+     var price =req.body.price;
      var author={
          id:req.user._id,
          username: req.user.username
@@ -108,8 +109,10 @@ app.post("/campgrounds",isloggedIn,function(req,res){
         image: Image,
         author: author,
         description: description,
+        price: price
 
     }
+    console.log(price);
 
      Campground.create(newCampground,function(err,campground){
          if(err){
