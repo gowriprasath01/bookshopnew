@@ -13,9 +13,14 @@
                 <img class="img-responsive" style="margin-top: 2em;width: 100%;" src="<%= campground.image %>" >
             </div>
             
-        
-            <p>Posted By: <strong><%= campground.author.username %></strong> </p>
+        <div>
 
+            <p>Posted & written By: <strong><%= campground.author.username %></strong> </p>
+            <p class="pull-right" style="display: inline;">Price <strong>$ </strong> <strong> <%= campground.price %></strong> </p>
+
+
+        </div>
+            
             <p style="margin-top: 2em;">
                 <%= campground.description %>
             </p>
@@ -38,8 +43,16 @@
                  </div>
          
 
-        <% } %>
+        <% }else { %>
+            <% var a = 0; %>
+            <% if (a === 0) {%>
+            <form>
+                <button class="btn btn-primary btn-lg btn-block" style="margin-top: 2em;">Buy Now!</button>
+            </form>
+            <% } %>
 
+
+        <% } %>
 
 
 
