@@ -1,6 +1,6 @@
-
-
 <% include ../partials/header %>
+
+
 
 <div class="container" style="margin: auto;">
     <div class="thumbnail" style="margin: 5% 0; width: 90%; padding: 3%;">
@@ -17,7 +17,9 @@
 
             <p>Posted & written By: <strong><%= campground.author.username %></strong> </p>
             <p class="pull-right" style="display: inline;">Price <strong>$ </strong> <strong> <%= campground.price %></strong> </p>
-
+            <% if(!(CurrentUser && campground.author.id.equals(CurrentUser._id))){ %>
+                <button id="buy" style="margin-right: 10px; " class="btn btn-primary float-right"><span class="book">Buy now</span></button>
+            <% } %>    
 
         </div>
             
@@ -45,7 +47,7 @@
 
         <% } %>
             
-
+        
 
 
 
@@ -89,14 +91,29 @@
 
 
 
-
-    <!-- <p>
-        <a class="btn btn-success btn-lg" href="campgrounds/<%= campground._id %>/comments/new">
-            Add new comment
-        </a>
-     </p> -->
      
 </div>
+
+
+<script>
+    var buy=document.getElementById("buy");
+    var message=document.querySelector(".book");
+
+    buy.addEventListener("click",function(){
+        if(message.textContent === "Buy now"){
+            alert("You are ready to the book , click the same button to unbuy");
+            message.textContent="Unbuy";
+        }else{
+            alert("Click buy to read the book");
+            message.textContent="Buy now";
+        }
+        
+
+
+    })
+</script>
+
+
 
 
 
